@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rxjava.githubmvvmrxjavakoin.app
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.rxjava.githubmvvmrxjavakoin.databinding.ActivityMainBinding
 import com.rxjava.githubmvvmrxjavakoin.domain.entities.UsersEntity
 import com.rxjava.githubmvvmrxjavakoin.ui.profile.ProfileActivity
@@ -14,12 +14,12 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
     private val adapter = UsersAdapter {
         viewModel.onUserClick(it)
     }
 
-    private lateinit var viewModel: UsersContract.ViewModel
+    private val viewModel: UsersViewModel by viewModel()
+
     private val viewModelDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +28,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initViews()
-
-        viewModel = extractViewModel()
 
         viewModelDisposable.addAll(
             viewModel.progressLiveData.subscribe{ showProgress(it) },
@@ -48,14 +46,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, ProfileActivity::class.java))
     }
 
-    private fun extractViewModel(): UsersContract.ViewModel {
-        return lastCustomNonConfigurationInstance as? UsersContract.ViewModel
-            ?: UsersViewModel(app.usersRepo)
-    }
-
-    override fun onRetainCustomNonConfigurationInstance(): UsersContract.ViewModel {
-        return viewModel
-    }
 
     private fun initViews() {
         binding.refreshButton.setOnClickListener {

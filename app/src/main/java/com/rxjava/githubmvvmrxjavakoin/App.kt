@@ -2,10 +2,20 @@ package com.rxjava.githubmvvmrxjavakoin
 
 import android.app.Application
 import android.content.Context
-import com.rxjava.githubmvvmrxjavakoin.data.RetrofitUsersRepoImpl
+import com.rxjava.githubmvvmrxjavakoin.data.retrofit.RetrofitUsersRepoImpl
+import com.rxjava.githubmvvmrxjavakoin.di.appModule
 import com.rxjava.githubmvvmrxjavakoin.domain.repos.UsersRepo
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 class App: Application() {
-    val usersRepo: UsersRepo by lazy { RetrofitUsersRepoImpl() }}
-
-val Context.app: App get() = applicationContext as App
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidLogger()
+            androidContext(this@App)
+            modules(appModule)
+        }
+    }
+}

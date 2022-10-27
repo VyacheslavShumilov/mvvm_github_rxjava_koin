@@ -4,6 +4,7 @@ import com.rxjava.githubmvvmrxjavakoin.domain.entities.UsersEntity
 import io.reactivex.rxjava3.core.Observable
 
 interface UsersContract {
+
     interface ViewModel {
 
         val usersLiveData: Observable<List<UsersEntity>>
@@ -12,7 +13,7 @@ interface UsersContract {
         val openProfileLiveData: Observable<Unit> // для открытия новой активити
 
         fun onRefresh()     //управляющий метод
-        fun onUserClick(usersEntity: UsersEntity)   // обработка нажатия на юзера в списке
+        fun onUserClick(usersEntity: UsersEntity)
     }
 
 }

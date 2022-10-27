@@ -11,7 +11,7 @@ import io.reactivex.rxjava3.subjects.Subject
 
 class UsersViewModel(
     private val usersRepo: UsersRepo
-    ) : UsersContract.ViewModel, ViewModel() {
+) : UsersContract.ViewModel, ViewModel() {
 
     override val usersLiveData: Observable<List<UsersEntity>> = BehaviorSubject.create()
     override val errorLiveData: Observable<Throwable> = BehaviorSubject.create()
@@ -47,6 +47,4 @@ class UsersViewModel(
         return this as? Subject<T>
             ?: throw IllegalStateException("It is not MutableLiveData")
     }
-
-
 }

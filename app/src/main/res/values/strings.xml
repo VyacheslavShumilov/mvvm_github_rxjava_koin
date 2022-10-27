@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">GitHub MVVM RxJava Koin</string>
-    <string name="main_activity_refresh_btn">Refresh!</string>
+    <string name="main_activity_refresh_btn">Обновить список</string>
 </resources>

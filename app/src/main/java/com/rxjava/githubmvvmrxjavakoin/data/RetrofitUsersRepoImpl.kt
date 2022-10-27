@@ -1,7 +1,10 @@
 package com.rxjava.githubmvvmrxjavakoin.data
 
 import com.rxjava.githubmvvmrxjavakoin.data.retrofit.GithubApi
+import com.rxjava.githubmvvmrxjavakoin.domain.entities.UsersEntity
+import com.rxjava.githubmvvmrxjavakoin.domain.repos.UsersRepo
 import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.kotlin.subscribeBy
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory

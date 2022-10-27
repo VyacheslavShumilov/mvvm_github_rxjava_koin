@@ -12,7 +12,7 @@ class RetrofitUsersRepoImpl(private val api: GithubApi) : UsersRepo {
 
         api.getUsers().subscribeBy(
             onSuccess = { users ->
-                onSuccess.invoke(users.map { it.toUserEntity() })
+                onSuccess.invoke(users.map { it.toUsersEntity() })
             },
             onError = {
                 onError?.invoke(it)
@@ -23,7 +23,7 @@ class RetrofitUsersRepoImpl(private val api: GithubApi) : UsersRepo {
     override fun getUsers(): Single<List<UsersEntity>> = api.getUsers()
         .map { users ->
             users.map {
-                it.toUserEntity()
+                it.toUsersEntity()
             }
         }
 }

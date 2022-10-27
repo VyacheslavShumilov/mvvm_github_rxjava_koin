@@ -5,3 +5,9 @@ data class UsersEntity(
     val id: Long,
     val avatarUrl: String
 )
+
+data class ProfileEntity(
+    val login: String,
+    val id: Long,
+    val avatarUrl: String
+)

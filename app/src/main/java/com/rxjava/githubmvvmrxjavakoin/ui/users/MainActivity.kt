@@ -14,6 +14,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     private val adapter = UsersAdapter {
         viewModel.onUserClick(it)
     }
@@ -42,10 +43,6 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    private fun openProfileScreen() {
-        startActivity(Intent(this, ProfileActivity::class.java))
-    }
-
 
     private fun initViews() {
         binding.refreshButton.setOnClickListener {
@@ -54,6 +51,10 @@ class MainActivity : AppCompatActivity() {
         initRecyclerView()
 
         showProgress(false)
+    }
+
+    private fun openProfileScreen() {
+        startActivity(Intent(this, ProfileActivity::class.java))
     }
 
 

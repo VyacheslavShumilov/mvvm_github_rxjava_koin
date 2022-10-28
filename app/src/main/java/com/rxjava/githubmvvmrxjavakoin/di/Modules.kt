@@ -2,7 +2,10 @@ package com.rxjava.githubmvvmrxjavakoin.di
 
 import com.rxjava.githubmvvmrxjavakoin.data.retrofit.RetrofitUsersRepoImpl
 import com.rxjava.githubmvvmrxjavakoin.data.retrofit.GithubApi
+import com.rxjava.githubmvvmrxjavakoin.data.retrofit.RetrofitProfileRepoImpl
+import com.rxjava.githubmvvmrxjavakoin.domain.repos.ProfileRepo
 import com.rxjava.githubmvvmrxjavakoin.domain.repos.UsersRepo
+import com.rxjava.githubmvvmrxjavakoin.ui.profile.ProfileViewModel
 import com.rxjava.githubmvvmrxjavakoin.ui.users.UsersViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -31,5 +34,10 @@ val appModule = module {
         RetrofitUsersRepoImpl(get())
     }
 
+    single<ProfileRepo> {
+        RetrofitProfileRepoImpl(get())
+    }
+
     viewModel { UsersViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
 }

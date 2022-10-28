@@ -14,8 +14,10 @@ class UsersViewHolder (parent: ViewGroup, private val onItemClickListener: (user
 
 
     private val binding = ItemUserBinding.bind(itemView).apply {
-        avatarImageView.setOnClickListener {
-            onItemClickListener.invoke(usersEntity)
+        //вместо root можно сделать клик по аватарке "avatarImageView.setOn..."
+        root.setOnClickListener {
+            //вызываю callback который передан в конструкторе при создании UsersViewHolder
+            onItemClickListener.invoke(usersEntity) // 3) воспользовался объектом при нажатии
         }
     }
 

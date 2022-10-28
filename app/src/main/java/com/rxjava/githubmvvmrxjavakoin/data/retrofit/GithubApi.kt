@@ -9,5 +9,5 @@ interface GithubApi {
     fun getUsers(): Single<List<UsersEntityDto>>
 
     @GET("users/{login}")
-    fun getProfile(@Path("login") login: String): Single<ProfileEntityDto>
+    fun getProfile(): Single<ProfileEntityDto>
 }

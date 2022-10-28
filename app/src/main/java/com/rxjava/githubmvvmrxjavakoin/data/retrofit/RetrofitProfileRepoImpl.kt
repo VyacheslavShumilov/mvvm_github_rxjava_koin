@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.kotlin.subscribeBy
 class RetrofitProfileRepoImpl(private val api: GithubApi) : ProfileRepo {
 
     override fun getProfile(onSuccess: (ProfileEntity) -> Unit, onError: ((Throwable) -> Unit)?) {
-        api.getProfile(login).subscribeBy(
+        api.getProfile().subscribeBy(
             onSuccess = { profile ->
                 onSuccess.invoke(profile.toProfileEntity())
             },
@@ -18,7 +18,7 @@ class RetrofitProfileRepoImpl(private val api: GithubApi) : ProfileRepo {
         )
     }
 
-    override fun getProfile(login: String): Single<ProfileEntity> = api.getProfile(login)
+    override fun getProfile(): Single<ProfileEntity> = api.getProfile()
         .map { profile ->
             profile.toProfileEntity()
         }

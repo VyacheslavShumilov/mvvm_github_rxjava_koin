@@ -6,5 +6,5 @@ import io.reactivex.rxjava3.core.Single
 interface ProfileRepo {
     fun getProfile(onSuccess: (ProfileEntity) -> Unit, onError: ((Throwable) -> Unit)? = null)
 
-    fun getProfile(login: String): Single<ProfileEntity>
+    fun getProfile(): Single<ProfileEntity>
 }

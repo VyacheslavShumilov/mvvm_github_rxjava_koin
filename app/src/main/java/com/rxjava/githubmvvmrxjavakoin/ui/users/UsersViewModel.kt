@@ -23,7 +23,7 @@ class UsersViewModel(
     }
 
     override fun onUserClick(usersEntity: UsersEntity) {
-        openProfileLiveData
+        (openProfileLiveData as BehaviorSubject).onNext(Unit)
     }
 
     private fun loadData() {

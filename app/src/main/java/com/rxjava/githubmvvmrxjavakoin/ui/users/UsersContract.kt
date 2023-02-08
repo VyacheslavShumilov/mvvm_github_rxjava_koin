@@ -1,5 +1,6 @@
 package com.rxjava.githubmvvmrxjavakoin.ui.users
 
+import com.rxjava.githubmvvmrxjavakoin.domain.entities.ProfileEntity
 import com.rxjava.githubmvvmrxjavakoin.domain.entities.UsersEntity
 import io.reactivex.rxjava3.core.Observable
 
@@ -13,7 +14,7 @@ interface UsersContract {
         val openProfileLiveData: Observable<Unit> // для открытия новой активити
 
         fun onRefresh()     //управляющий метод
-        fun onUserClick(usersEntity: UsersEntity)
+        fun onProfileClick()
     }
 
 }

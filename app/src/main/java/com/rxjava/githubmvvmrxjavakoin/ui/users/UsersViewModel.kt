@@ -1,6 +1,7 @@
 package com.rxjava.githubmvvmrxjavakoin.ui.users
 
 import androidx.lifecycle.ViewModel
+import com.rxjava.githubmvvmrxjavakoin.domain.entities.ProfileEntity
 import com.rxjava.githubmvvmrxjavakoin.domain.entities.UsersEntity
 import com.rxjava.githubmvvmrxjavakoin.domain.repos.UsersRepo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -22,7 +23,7 @@ class UsersViewModel(
         loadData()
     }
 
-    override fun onUserClick(usersEntity: UsersEntity) {
+    override fun onProfileClick() {
         (openProfileLiveData as BehaviorSubject).onNext(Unit)
     }
 
